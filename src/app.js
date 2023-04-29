@@ -11,7 +11,6 @@ app.listen(port, () => {
     console.log(`Server Up on port ${port}`);
 });
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
@@ -23,6 +22,5 @@ app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
 // Cart API Response
 app.use('/api/cart', cartRouter);
-
 
 

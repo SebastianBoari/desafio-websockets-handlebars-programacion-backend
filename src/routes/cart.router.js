@@ -1,4 +1,4 @@
-const { productManager } =  require('../classes/ProductManager');
+const { productManager } = require('../classes/ProductManager');
 const { Router } = require('express');
 const router = Router();
 
@@ -21,6 +21,5 @@ router.post('/:cid/product/:pid', (req, res)=>{
 
     res.status(200).send(productManager.addToCart(cid, pId));
 });
-
 
 module.exports = router;
