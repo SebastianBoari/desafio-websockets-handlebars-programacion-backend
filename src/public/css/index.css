@@ -1,4 +1,20 @@
 body{
-    background-color: black;
-    color: azure;
+    background-color: rgb(202, 206, 212);
+}
+#title{
+    padding: 32px;
+    margin: 32px 0;
+    background-color: rgb(49, 49, 49);
+    color: whitesmoke;
+    border-radius: 6px;
+}
+#products-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+}
+#products-container .card .row img{
+    height: 212px!important;
+    width: 212px!important;
+    object-fit: cover!important;
 }
