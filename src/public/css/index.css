@@ -7,7 +7,9 @@ body{
     background-color: rgb(49, 49, 49);
     color: whitesmoke;
     border-radius: 6px;
+
 }
+
 #products-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -17,4 +19,37 @@ body{
     height: 212px!important;
     width: 212px!important;
     object-fit: cover!important;
+}
+
+#form-container{
+    padding: 32px;
+    margin: 32px 0;
+    border-radius: 6px;
+    color: rgb(49, 49, 49);
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+}
+
+
+#form-container #form{
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+}
+
+#form-container #form input{
+    border-radius: 5px;
+    border: none;
+    padding: 16px;
+}
+
+#form-container #form input:focus{
+    outline: none;
+}
+#fileInput{
+    display: none;
+}
+.fileInput-label label{
+    display: inline-block;
 }

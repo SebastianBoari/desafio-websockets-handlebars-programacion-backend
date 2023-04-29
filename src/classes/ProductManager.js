@@ -110,8 +110,6 @@ class ProductManager {
         };
     };
 
-
-
     // CART
     async #loadCarts(){
         try {

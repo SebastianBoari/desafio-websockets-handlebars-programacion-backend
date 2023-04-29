@@ -8,7 +8,6 @@ const handlebars = require('express-handlebars');
 const app = express();
 const port = 8080; 
 
-
 app.engine('handlebars', handlebars.engine());
 app.set('views', './src/views');
 app.set('view engine', 'handlebars');
@@ -26,13 +25,12 @@ app.use('/api/products', productsRouter);
 // Cart API Response
 app.use('/api/cart', cartRouter);
 
-
-app.listen(port, () => {
+const serverHttp = app.listen(port, () => {
     console.log(`Server Up on port ${port}`);
 });
 
-// const serverSocket = new Server(serverHttp);
+const serverSocket = new Server(serverHttp);
 
-// serverSocket.on('connection', () => {
-//     console.log('Nuevo cliente conectado...');
-// });
+serverSocket.on('connection', () => {
+    console.log('Nuevo cliente conectado...');
+});
