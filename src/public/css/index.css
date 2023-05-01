@@ -48,8 +48,25 @@ body{
     outline: none;
 }
 #fileInput{
-    display: none;
+    background-color: whitesmoke;
+    color: rgb(49, 49, 49);
+    cursor: pointer;
 }
-.fileInput-label label{
-    display: inline-block;
+.statusInput-label{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+#submitInput{
+    font-weight: 400;
+    cursor: pointer;
+    transition: all .3s;
+    background-color: #0d6efd;
+}
+#submitInput:hover{
+    background-color: rgb(10, 71, 163);
 }
