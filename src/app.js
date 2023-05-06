@@ -1,9 +1,8 @@
 const express = require('express');
 const { Server } = require('socket.io');
-const productsRouter = require('./routes/products.router');
-const cartRouter = require('./routes/cart.router');
 const viewsRouter = require('./routes/views.router');
 const handlebars = require('express-handlebars');
+const productManager = require('./classes/ProductManager');
 
 const app = express();
 const port = 8080; 
@@ -19,18 +18,29 @@ app.use(express.static('./src/public'));
 // Views Handler
 app.use('/', viewsRouter);
 
-// Products API Response
-app.use('/api/products', productsRouter);
-
-// Cart API Response
-app.use('/api/cart', cartRouter);
-
-const serverHttp = app.listen(port, () => {
+const httpServer = app.listen(port, () => {
     console.log(`Server Up on port ${port}`);
 });
 
-const serverSocket = new Server(serverHttp);
+const socketServer = new Server(httpServer);
 
-serverSocket.on('connection', () => {
+const products = productManager.getProducts();
+
+socketServer.on('connection', (socket) => {
     console.log('Nuevo cliente conectado...');
+    socketServer.emit('products', products);
+
+    socket.on('newProduct', (product) => {
+        productManager.addProduct(product.title, product.description, product.thumbnail, product.stock, product.price);
+        socketServer.emit('products', products);
+    });
+
+    socket.on('deleteProduct', (product) => {
+        const productToDelete = Number(product);
+        
+        productManager.deleteProduct(productToDelete);
+        
+        socketServer.emit('products', products);
+    });
 });
+
