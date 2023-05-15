@@ -39,8 +39,7 @@ socketServer.on('connection', (socket) => {
         const productToDelete = Number(product);
         
         productManager.deleteProduct(productToDelete);
-        
+
         socketServer.emit('products', products);
     });
 });
-

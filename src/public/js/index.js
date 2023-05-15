@@ -1,8 +1,6 @@
 const socket = io();
 
-
 // Crear Productos
-
 const form = document.getElementById('form');
 const titleInput = document.getElementById('titleInput');
 const priceInput = document.getElementById('priceInput');
